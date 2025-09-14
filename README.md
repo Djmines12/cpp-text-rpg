@@ -1,2 +1,2 @@
 # cpp-text-rpg
-A console based role playing game where the player fights enemies. Built using C++.
+A console based role playing game, inspired by phantom of the opera, where the player makes decisions with numerous outcomes and fights opponents
