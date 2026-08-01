@@ -1,6 +1,6 @@
 #include <iostream>
 #include <string>
-#include <vector> // Added for the inventory system
+#include <vector> 
 #include <cstdlib>
 #include <ctime>
 
@@ -14,7 +14,7 @@ public:
     int wits;
     int brawn;
     int charisma;
-    std::vector<std::string> inventory; // For holding items
+    std::vector<std::string> inventory; 
 
     Player(std::string n, int h, int a, int w, int b, int c) {
         name = n;
@@ -75,7 +75,7 @@ void printStatus(Player player, Enemy enemy) {
 int main() {
     srand(time(0));
 
-    // --- STEP 1: GET PLAYER NAME ---
+    // Getting player name
     
     std::string playerName;
     std::cout << "It's a chilly Autumn night in Paris, France. The year is 1897. You walk into an opera house, hoping to watch a great show. A man in a suit walks up to you and says, " << std::endl;
@@ -84,7 +84,7 @@ int main() {
     std::cout << "Let me introduce myself. I am the manager, Monsieur Joseph Pettiegrew, at your serivce. *He bows* And you are?' ";
     std::cin >> playerName;
     
-    // --- STEP 2: CHARACTER CREATION ---
+    // character creation
     
     int points = 5;
     int wits = 5, brawn = 5, charisma = 5;
@@ -100,11 +100,11 @@ int main() {
         if (choice == 1) wits++;
         else if (choice == 2) brawn++;
         else if (choice == 3) charisma++;
-        else continue; // Invalid choice
+        else continue; 
         points--;
     }
 
-    // --- STEP 3: CREATE THE PLAYER OBJECT ---
+    // create player
     
     Player player(playerName, 100, 15 + brawn, wits, brawn, charisma);
     std::cout << "\n'Very interesting,' says the manager. 'Let's find our seats shall we? The show is about to begin.'\n" << std::endl;
@@ -112,14 +112,14 @@ int main() {
     
     Enemy phantom("The Phantom", 130, 15);
 
-    //  SCENE 1: THE CHANDELIER 
+    //  SCENE 1
     std::cout << "The overture begins. You hear whispers and mumbles about the Vicomte de Chagny, who is reportedly in attendance for Christine." << std::endl;
     std::cout << "Despite the music, you hear a faint creaking from above. Do you look up? (1 for Yes, 2 for No): ";
     int choice2;
     std::cin >> choice2;
     if (choice2 == 1) {
         std::cout << "\nYou look up at the grand chandelier. In the catwalks above, you spot a shadowy figure. Perhaps wearing a mask. He sees you looking." << std::endl;
-        // Wits Skill Check!
+        // skill check
         if (player.wits > 8) {
              std::cout << "Your sharp eyes notice more than just a figure; he is tampering with the chandelier's support rope!\n";
         }
@@ -128,7 +128,7 @@ int main() {
         std::cout << "\nYou dismiss the sound, focusing on the stage and the crowd around you. You feel an unnerving sensation of being watched.\n" << std::endl;
     }
 
-    // The DISCUSSION
+
     std::cout << "'Ah excuse me Monsieur or Mademoiselle', a stranger whispers to you" << std::endl;
     std::cout << "'I'm sorry it's terribly dark in here. Forgive my intrusion, have you heard what's been happening lately?'(1 to indulge in the conversation with the stranger, 2 to Politely Decline, 3 to Ignore Him) ";
     int choice3;
@@ -146,7 +146,7 @@ int main() {
     }
     
 
-    // SCENE 2: THE ABDUCTION 
+    // SCENE 2
     std::cout << "The curtain rises. Christine Daaé's voice fills the hall, a sound more beautiful than anyone could imagine. How on earth could she have learned to sing like this?" << std::endl;
     std::cout << "As she sings the final powerful note, a C octaves above the staff, all the lights in the opera house suddenly go out. The room is now thrown into darkness!" << std::endl;
     std::cout << "Panic erupts. When the emergency lights flicker on, Christine is gone!" << std::endl;
@@ -157,7 +157,7 @@ int main() {
     std::cin >> followChoice;
 
     if (followChoice == 1) {
-        // SCENE 3: THE LAIR (The Confrontation) 
+        // SCENE 3
         std::cout << "\nYou slip through the secret door into the cold and damp catacombs beneath the opera house." << std::endl;
         std::cout << "Guided by the faint echo of music, you arrive at a pond. A lone boat waits." << std::endl;
         std::cout << "Across the water, you see his lair, lit by fabulous candles. The Phantom is there, with Christine at his organ." << std::endl;
@@ -181,13 +181,13 @@ int main() {
             } else if (choice == 2) {
                 std::cout << "\nYou attempt to reason with him, talking to the man behind the mask.\n";
                 
-                // A skill check: roll a 20-sided die and add your charisma
+             
                 int persuasionRoll = (rand() % 20 + 1) + player.charisma;
-                int difficulty = 22; // The Phantom is very difficult to persuade!
+                int difficulty = 22;
 
                 if (persuasionRoll >= difficulty) {
                     std::cout << "Your words strike a chord! He begins to see the horror of his actions. 'You... you are right,' he whispers, lowering his weapon. 'How could I do this to Christine?'" << std::endl;
-                    phantom.takeDamage(999); // a way to end the fight after persuasion
+                    phantom.takeDamage(999); 
                 } else {
                     std::cout << "'Your pity is wasted on me!' he roars, enraged by your attempt. He presses the attack!\n";
                 }
@@ -213,7 +213,7 @@ int main() {
         }
 
     } else {
-        // --- ALTERNATE ENDING (Player chooses not to follow) ---
+        // --- Alt ending  
         std::cout << "\nYou decide the risk is too great and remain in the auditorium. The police are called, but Christine is never seen again." << std::endl;
         std::cout << "The legend of the Phantom of the Opera is born from the tragedy. The End." << std::endl;
     }
